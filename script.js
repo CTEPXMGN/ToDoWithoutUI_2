@@ -1,8 +1,8 @@
 const list = [ 
-    { name: 'create a post', status: 'in progress', priority: 'low'  }, 
-    { name: 'test', status: 'done', priority: 'high'  },
+    { name: 'create a post', status: 'in progress', priority: 'low' }, 
+    { name: 'test', status: 'done', priority: 'high' },
 ] 
-
+// Добавляем задачу
 function addTask(task, status, priority) {
     let newTask = {};
 
@@ -12,7 +12,7 @@ function addTask(task, status, priority) {
 
     list.push(newTask);
 }
-
+// Меняем статус задачи
 function changeStatus(task, status) {
     let result = list.map(function(item) {
         if (item.name === task) {
@@ -22,7 +22,7 @@ function changeStatus(task, status) {
 
     return result;
 }
-
+// Меняем приоритетность задачи
 function changePriority(task, priority) {
     let result = list.map(function(item) {
         if (item.name === task) {
@@ -32,7 +32,15 @@ function changePriority(task, priority) {
 
     return result;
 }
+// Удаляем задачу
+function deleteTask(task) {
+    
+    let resultIndex = list.findIndex(item => item.name == task)
 
+    return list.splice(resultIndex, 1);
+}
+
+// Выводим список задач в консоль
 function showList() {
     console.log(list);
 }
@@ -41,11 +49,8 @@ addTask('drink coffee', 'in progress', 'high');
 addTask('have a walk', 'in progress', 'high');
 changeStatus('drink coffee', 'done');
 changePriority('have a walk', 'low');
+deleteTask('create a post');
 showList();
-
-// function changeStatus(list, task, status) {
-//     return list[task] = status;
-// }
 
 // function showList(list) {
 //     let inProgress = 'In progress: \n';
