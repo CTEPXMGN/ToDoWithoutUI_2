@@ -13,18 +13,35 @@ function addTask(task, status, priority) {
     list.push(newTask);
 }
 
+function changeStatus(task, status) {
+    let result = list.map(function(item) {
+        if (item.name === task) {
+            item.status = status;
+        }
+    })
+
+    return result;
+}
+
+function changePriority(task, priority) {
+    let result = list.map(function(item) {
+        if (item.name === task) {
+            item.priority = priority;
+        }
+    })
+
+    return result;
+}
+
 function showList() {
     console.log(list);
 }
 
 addTask('drink coffee', 'in progress', 'high');
+addTask('have a walk', 'in progress', 'high');
+changeStatus('drink coffee', 'done');
+changePriority('have a walk', 'low');
 showList();
-
-// let toDoList = {};
-
-// function addTask(list, task, status) {
-//     return list[task] = status;
-// }
 
 // function changeStatus(list, task, status) {
 //     return list[task] = status;
