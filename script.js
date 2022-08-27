@@ -1,7 +1,16 @@
 const list = [ 
     { name: 'create a post', status: 'in progress', priority: 'low' }, 
     { name: 'test', status: 'done', priority: 'high' },
-] 
+];
+const STATUS = {
+    TO_DO: 'to do',
+    IN_PROGRESS: 'in progress',
+    DONE: 'done',
+}
+const PRIORITY = {
+    HIGH: 'high',
+    LOW: 'low',
+}
 // Добавляем задачу
 function addTask(task, status, priority) {
     let newTask = {};
@@ -45,10 +54,12 @@ function showList() {
     console.log(list);
 }
 
-addTask('drink coffee', 'in progress', 'high');
-addTask('have a walk', 'in progress', 'high');
-changeStatus('drink coffee', 'done');
-changePriority('have a walk', 'low');
+addTask('drink coffee', STATUS.IN_PROGRESS, PRIORITY.HIGH);
+addTask('have a walk', STATUS.IN_PROGRESS, PRIORITY.HIGH);
+addTask('to run', STATUS.TO_DO, PRIORITY.LOW);
+addTask('to make a bed', STATUS.TO_DO, PRIORITY.LOW);
+changeStatus('drink coffee', STATUS.DONE);
+changePriority('have a walk', PRIORITY.LOW);
 deleteTask('create a post');
 showList();
 
@@ -69,9 +80,6 @@ showList();
 //     return console.log(result);;
 // }
 
-// function deleteTask(list ,task) {
-//     delete list[task];
-// }
 
 // addTask(toDoList, 'to run', 'in progress');
 // addTask(toDoList, 'to buy a bread', 'in progress');
