@@ -51,7 +51,26 @@ function deleteTask(task) {
 
 // Выводим список задач в консоль
 function showList() {
-    console.log(list);
+    let toDo = 'To do: \n';
+    let inProgress = 'In progress: \n';
+    let done = 'Done: \n';
+
+    list.forEach(function(item) {
+        for (let key in item) {
+            if (item[key] == STATUS.IN_PROGRESS) {
+                inProgress = inProgress + '  ' + item.name + '\n';
+            }
+            if (item[key] == STATUS.DONE) {
+                done = done + '  ' + item.name + '\n';
+            }
+            if (item[key] == STATUS.TO_DO) {
+                toDo = toDo + '  ' + item.name + '\n';
+            }
+        }
+    })
+    let result = toDo + inProgress + done;
+                
+    return console.log(result);
 }
 
 addTask('drink coffee', STATUS.IN_PROGRESS, PRIORITY.HIGH);
@@ -62,29 +81,3 @@ changeStatus('drink coffee', STATUS.DONE);
 changePriority('have a walk', PRIORITY.LOW);
 deleteTask('create a post');
 showList();
-
-// function showList(list) {
-//     let inProgress = 'In progress: \n';
-//     let done = 'Done: \n';
-
-//     for (let key in list) {
-//         if (list[key] == 'in progress') {
-//             inProgress = inProgress + '  ' + key + '\n';
-//         }
-//         if (list[key] == 'done') {
-//             done = done + '  ' + key + '\n';
-//         }
-//     }
-//     let result = inProgress + done;
-    
-//     return console.log(result);;
-// }
-
-
-// addTask(toDoList, 'to run', 'in progress');
-// addTask(toDoList, 'to buy a bread', 'in progress');
-// addTask(toDoList, 'to drink a cup of coffee', 'done');
-// addTask(toDoList, 'to make a bed', 'in progress');
-// changeStatus(toDoList, 'to run', 'done');
-// deleteTask(toDoList, 'to drink a cup of coffee');
-// showList(toDoList);
